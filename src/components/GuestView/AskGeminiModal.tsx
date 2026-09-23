@@ -40,7 +40,7 @@ export const AskGeminiModal: React.FC<AskGeminiModalProps> = ({
     'How far is Diversion Road from Calle Crisologo?',
   ];
 
-  const handleSend = (textToSend?: string) => {
+  const handleSend = async (textToSend?: string) => {
     const q = textToSend || inputQuery;
     if (!q.trim()) return;
 
@@ -54,20 +54,48 @@ export const AskGeminiModal: React.FC<AskGeminiModalProps> = ({
     setInputQuery('');
     setIsLoading(true);
 
+    try {
+      // 1. Try calling the secure PHP backend proxy (backend.php)
+      const res = await fetch('/backend.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'ask_gemini', prompt: q }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        if (data.reply) {
+          setMessages((prev) => [
+            ...prev,
+            {
+              id: (Date.now() + 1).toString(),
+              sender: 'gemini',
+              text: data.reply,
+            },
+          ]);
+          setIsLoading(false);
+          return;
+        }
+      }
+    } catch {
+      // If backend.php is not reached (e.g. static dev environment), fall back to built-in concierge responses
+    }
+
+    // 2. Intelligent local fallback knowledge base
     setTimeout(() => {
       let reply = '';
       const lower = q.toLowerCase();
 
-      if (lower.includes('family') || lower.includes('6') || lower.includes('group') || lower.includes('8')) {
-        reply = 'For larger families or groups, we recommend **Room 1 - Standard Family Suite** (up to 6 guests at ₱2,800/night) or **Room 3 - Heritage Balcony Suite** (up to 8 guests at ₱3,200/night with dual bathrooms). Both feature spacious bedding and kitchenette amenities.';
+      if (lower.includes('family') || lower.includes('6') || lower.includes('group') || lower.includes('8') || lower.includes('20') || lower.includes('villa')) {
+        reply = 'For large groups or families, we offer:\n• **Room 17 - Private Villa** (up to 20 pax with private pool & BBQ pavilion, starting at ₱7,000–₱8,000)\n• **Room 14, 15, & 16 - Family Rooms** (up to 5 pax starting at ₱1,000–₱1,800)\n• **Room 0 & 1 - Big Family Rooms** (up to 8 pax).';
       } else if (lower.includes('check-in') || lower.includes('check in') || lower.includes('time') || lower.includes('hours')) {
         reply = 'Standard check-in starts at **2:00 PM** and check-out is by **12:00 PM (Noon)**. Front desk is staffed 24/7 on Diversion Road, and late check-in is readily accommodated upon request!';
-      } else if (lower.includes('calle crisologo') || lower.includes('location') || lower.includes('attraction') || lower.includes('far')) {
+      } else if (lower.includes('calle crisologo') || lower.includes('location') || lower.includes('attraction') || lower.includes('far') || lower.includes('where')) {
         reply = 'Diversion Vigan Transient is situated along Diversion Road in Vigan City, just **5 to 8 minutes** by tricycle or car from Calle Crisologo, Plaza Salcedo, and the Bantay Bell Tower. It provides quiet relaxation away from cobblestone traffic!';
-      } else if (lower.includes('rate') || lower.includes('custom') || lower.includes('pax') || lower.includes('weekend')) {
-        reply = 'Our rates start at **₱1,500/night** for Studio Rooms. Friday and Saturday bookings may feature weekend rates, and extra guests beyond the base pax incur a modest surcharge of ₱350–₱400/night. We also offer 10%–18% discounts on stays of 3 nights or more!';
+      } else if (lower.includes('rate') || lower.includes('price') || lower.includes('pax') || lower.includes('weekend')) {
+        reply = 'Our rates are standardized in Philippine Pesos (₱):\n• **Family Rooms (14, 15, 16)**: Mon-Thu ₱1,000–₱1,500 | Fri-Sun ₱1,200–₱1,800\n• **Private Villa (17)**: Mon-Thu ₱7,000 (+₱400/extra pax) | Fri-Sun ₱8,000 (+₱500/extra pax)\n• **Standard Rooms**: Starting at ₱1,500/night.';
       } else {
-        reply = `Diversion Vigan Transient offers 8 well-appointed studio rooms, family suites, and modern lofts with fiber Wi-Fi, air conditioning, and parking along Diversion Road. Feel free to browse our listings or check our live room calendar!`;
+        reply = `Welcome to Diversion Vigan Transient! We offer 8 well-appointed studio rooms, family suites, and modern lofts with high-speed Wi-Fi, cold air conditioning, and secure parking along Diversion Road in Vigan City. How can I help you plan your stay?`;
       }
 
       setMessages((prev) => [
@@ -79,7 +107,7 @@ export const AskGeminiModal: React.FC<AskGeminiModalProps> = ({
         },
       ]);
       setIsLoading(false);
-    }, 600);
+    }, 500);
   };
 
   return (
