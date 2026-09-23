@@ -5,6 +5,7 @@ import { getCurrentCustomer } from './utils/customerAuth';
 import { Header } from './components/Header';
 import { GuestDashboard } from './components/GuestView/GuestDashboard';
 import { AdminDashboard } from './components/AdminView/AdminDashboard';
+import { FrontDeskLoginModal } from './components/AdminView/FrontDeskLoginModal';
 import { RoomDetailModal } from './components/GuestView/RoomDetailModal';
 import { BookingModal } from './components/GuestView/BookingModal';
 import { AskGeminiModal } from './components/GuestView/AskGeminiModal';
@@ -23,6 +24,16 @@ export default function App() {
   });
   const [currentView, setCurrentView] = useState<'guest' | 'admin'>('guest');
   const [guestSubTab, setGuestSubTab] = useState<'all' | 'saved' | 'my-booking'>('all');
+
+  // Front Desk Security / Login State
+  const [isFrontDeskAuthenticated, setIsFrontDeskAuthenticated] = useState<boolean>(() => {
+    try {
+      return sessionStorage.getItem('div_front_desk_authenticated') === 'true';
+    } catch {
+      return false;
+    }
+  });
+  const [isFrontDeskLoginModalOpen, setIsFrontDeskLoginModalOpen] = useState(false);
 
   // Customer Account Auth State
   const [currentCustomer, setCurrentCustomer] = useState<CustomerUser | null>(() => getCurrentCustomer());
@@ -257,6 +268,37 @@ export default function App() {
     } catch {}
   };
 
+  // Front Desk Authentication Handlers
+  const handleRequestViewChange = (view: 'guest' | 'admin') => {
+    if (view === 'admin') {
+      if (isFrontDeskAuthenticated) {
+        setCurrentView('admin');
+      } else {
+        setIsFrontDeskLoginModalOpen(true);
+      }
+    } else {
+      setCurrentView('guest');
+      setGuestSubTab('all');
+    }
+  };
+
+  const handleFrontDeskLoginSuccess = () => {
+    setIsFrontDeskAuthenticated(true);
+    setIsFrontDeskLoginModalOpen(false);
+    setCurrentView('admin');
+    showToast('Front Desk access authorized. Welcome, Admin!', 'success');
+  };
+
+  const handleFrontDeskLogout = () => {
+    setIsFrontDeskAuthenticated(false);
+    try {
+      sessionStorage.removeItem('div_front_desk_authenticated');
+    } catch {}
+    setCurrentView('guest');
+    setGuestSubTab('all');
+    showToast('Front Desk locked. Returned to Guest View.', 'info');
+  };
+
   const customerBookingsCount = currentCustomer
     ? reservations.filter((r) => r.guestEmail.toLowerCase() === currentCustomer.email.toLowerCase()).length
     : 0;
@@ -269,10 +311,7 @@ export default function App() {
         currentCustomer={currentCustomer}
         savedCount={savedRoomIds.length}
         customerBookingsCount={customerBookingsCount}
-        onViewChange={(view) => {
-          setCurrentView(view);
-          if (view === 'guest') setGuestSubTab('all');
-        }}
+        onViewChange={handleRequestViewChange}
         onGuestSubTabChange={(tab) => {
           setCurrentView('guest');
           setGuestSubTab(tab);
@@ -318,10 +357,18 @@ export default function App() {
             onUpdateRoom={handleUpdateRoom}
             onAddNewRoom={handleAddNewRoom}
             onSaveRoomCustomRates={handleSaveRoomCustomRates}
+            onLogout={handleFrontDeskLogout}
             onShowToast={showToast}
           />
         )}
       </main>
+
+      {/* Front Desk Security Login Modal */}
+      <FrontDeskLoginModal
+        isOpen={isFrontDeskLoginModalOpen}
+        onClose={() => setIsFrontDeskLoginModalOpen(false)}
+        onLoginSuccess={handleFrontDeskLoginSuccess}
+      />
 
       {/* Floating Ask Gemini Assistant Button & Modal */}
       <AskGeminiModal

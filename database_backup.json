@@ -1,0 +1,328 @@
+{
+  "backup_metadata": {
+    "app_name": "Diversion Vigan Transient Hotel Management System",
+    "version": "1.0.0",
+    "currency": "PHP",
+    "exported_at": "2026-09-22T22:36:00Z",
+    "location": "Diversion Road, Vigan City, Ilocos Sur, Philippines"
+  },
+  "tables": {
+    "rooms_inventory": [
+      {
+        "id": "room-0",
+        "roomNumber": "0",
+        "name": "Room 0 - Big Family Room",
+        "category": "Family Suites",
+        "capacity": 8,
+        "bedsCount": 2,
+        "bathsCount": 1,
+        "rating": 4.88,
+        "pricePerNight": 2000,
+        "pricePerHour": 220,
+        "status": "Available",
+        "isClean": true,
+        "floor": 1,
+        "sizeSqM": 45,
+        "amenities": ["High-Speed Wi-Fi", "Smart TV", "Air Conditioning", "Hot & Cold Shower", "Mini Refrigerator"],
+        "houseRules": ["No smoking inside room", "Quiet hours from 10 PM to 7 AM"],
+        "cancellationPolicy": "Free cancellation up to 24 hours before check-in time.",
+        "customRates": {
+          "paxTierRates": {
+            "monThu": { "1": 2000, "2": 2000, "3": 2000, "4": 2000, "5": 2000, "6": 2400, "7": 2550, "8": 2700 },
+            "friSun": { "1": 2200, "2": 2200, "3": 2200, "4": 2200, "5": 2200, "6": 2550, "7": 2750, "8": 3000 }
+          }
+        }
+      },
+      {
+        "id": "room-1",
+        "roomNumber": "1",
+        "name": "Room 1 - Big Family Room",
+        "category": "Family Suites",
+        "capacity": 8,
+        "bedsCount": 2,
+        "bathsCount": 1,
+        "rating": 4.92,
+        "pricePerNight": 2000,
+        "pricePerHour": 250,
+        "status": "Available",
+        "isClean": true,
+        "floor": 1,
+        "sizeSqM": 45,
+        "amenities": ["High-Speed Wi-Fi", "Smart TV", "Air Conditioning", "Hot & Cold Shower", "Mini Refrigerator"],
+        "houseRules": ["No smoking inside room", "Quiet hours from 10 PM to 7 AM"],
+        "cancellationPolicy": "Free cancellation up to 24 hours before check-in time.",
+        "customRates": {
+          "paxTierRates": {
+            "monThu": { "1": 2000, "2": 2000, "3": 2000, "4": 2000, "5": 2000, "6": 2400, "7": 2550, "8": 2700 },
+            "friSun": { "1": 2200, "2": 2200, "3": 2200, "4": 2200, "5": 2200, "6": 2550, "7": 2750, "8": 3000 }
+          }
+        }
+      },
+      {
+        "id": "room-2",
+        "roomNumber": "2",
+        "name": "Room 2 - Loft type Family",
+        "category": "Lofts",
+        "capacity": 10,
+        "bedsCount": 3,
+        "bathsCount": 2,
+        "rating": 4.85,
+        "pricePerNight": 2000,
+        "pricePerHour": 280,
+        "status": "Available",
+        "isClean": true,
+        "floor": 2,
+        "sizeSqM": 60,
+        "amenities": ["High-Speed Wi-Fi", "Smart TV", "Air Conditioning", "Hot & Cold Shower", "Loft Mezzanine"],
+        "houseRules": ["Strictly no smoking", "Quiet hours after 10 PM"],
+        "cancellationPolicy": "Free cancellation up to 24 hours before check-in.",
+        "customRates": {
+          "paxTierRates": {
+            "monThu": { "1": 2000, "2": 2000, "3": 2000, "4": 2000, "5": 2000, "6": 2400, "7": 2550, "8": 2700, "9": 2750, "10": 3000 },
+            "friSun": { "1": 2200, "2": 2200, "3": 2200, "4": 2200, "5": 2200, "6": 2550, "7": 2750, "8": 3000, "9": 3150, "10": 3500 }
+          }
+        }
+      },
+      {
+        "id": "room-3",
+        "roomNumber": "3",
+        "name": "Room 3 - Loft type Family",
+        "category": "Lofts",
+        "capacity": 10,
+        "bedsCount": 3,
+        "bathsCount": 2,
+        "rating": 4.87,
+        "pricePerNight": 2000,
+        "pricePerHour": 280,
+        "status": "Available",
+        "isClean": true,
+        "floor": 2,
+        "sizeSqM": 60,
+        "amenities": ["High-Speed Wi-Fi", "Smart TV", "Air Conditioning", "Hot & Cold Shower", "Balcony View"],
+        "houseRules": ["No smoking inside room", "No pets allowed"],
+        "cancellationPolicy": "Free cancellation up to 24 hours before check-in.",
+        "customRates": {
+          "paxTierRates": {
+            "monThu": { "1": 2000, "2": 2000, "3": 2000, "4": 2000, "5": 2000, "6": 2400, "7": 2550, "8": 2700, "9": 2750, "10": 3000 },
+            "friSun": { "1": 2200, "2": 2200, "3": 2200, "4": 2200, "5": 2200, "6": 2550, "7": 2750, "8": 3000, "9": 3150, "10": 3500 }
+          }
+        }
+      },
+      {
+        "id": "room-14",
+        "roomNumber": "14",
+        "name": "Room 14 - Family Room",
+        "category": "Family Suites",
+        "capacity": 5,
+        "bedsCount": 2,
+        "bathsCount": 1,
+        "rating": 4.86,
+        "pricePerNight": 1000,
+        "pricePerHour": 150,
+        "status": "Available",
+        "isClean": true,
+        "floor": 1,
+        "sizeSqM": 32,
+        "amenities": ["High-Speed Wi-Fi", "Air Conditioning", "Hot & Cold Shower", "Cable TV"],
+        "houseRules": ["No smoking", "Keep noise down after 10 PM"],
+        "cancellationPolicy": "Free cancellation up to 24 hours before check-in.",
+        "customRates": {
+          "paxTierRates": {
+            "monThu": { "1": 1000, "2": 1000, "3": 1200, "4": 1350, "5": 1500 },
+            "friSun": { "1": 1200, "2": 1200, "3": 1400, "4": 1600, "5": 1800 }
+          }
+        }
+      },
+      {
+        "id": "room-15",
+        "roomNumber": "15",
+        "name": "Room 15 - Family Room",
+        "category": "Family Suites",
+        "capacity": 5,
+        "bedsCount": 2,
+        "bathsCount": 1,
+        "rating": 4.84,
+        "pricePerNight": 1000,
+        "pricePerHour": 150,
+        "status": "Available",
+        "isClean": true,
+        "floor": 1,
+        "sizeSqM": 32,
+        "amenities": ["High-Speed Wi-Fi", "Air Conditioning", "Hot & Cold Shower", "Cable TV"],
+        "houseRules": ["No smoking", "Keep noise down after 10 PM"],
+        "cancellationPolicy": "Free cancellation up to 24 hours before check-in.",
+        "customRates": {
+          "paxTierRates": {
+            "monThu": { "1": 1000, "2": 1000, "3": 1200, "4": 1350, "5": 1500 },
+            "friSun": { "1": 1200, "2": 1200, "3": 1400, "4": 1600, "5": 1800 }
+          }
+        }
+      },
+      {
+        "id": "room-16",
+        "roomNumber": "16",
+        "name": "Room 16 - Family Room",
+        "category": "Family Suites",
+        "capacity": 5,
+        "bedsCount": 2,
+        "bathsCount": 1,
+        "rating": 4.9,
+        "pricePerNight": 1000,
+        "pricePerHour": 150,
+        "status": "Available",
+        "isClean": true,
+        "floor": 1,
+        "sizeSqM": 32,
+        "amenities": ["High-Speed Wi-Fi", "Air Conditioning", "Hot & Cold Shower", "Cable TV"],
+        "houseRules": ["No smoking", "Keep noise down after 10 PM"],
+        "cancellationPolicy": "Free cancellation up to 24 hours before check-in.",
+        "customRates": {
+          "paxTierRates": {
+            "monThu": { "1": 1000, "2": 1000, "3": 1200, "4": 1350, "5": 1500 },
+            "friSun": { "1": 1200, "2": 1200, "3": 1400, "4": 1600, "5": 1800 }
+          }
+        }
+      },
+      {
+        "id": "room-17",
+        "roomNumber": "17",
+        "name": "Room 17 - Private Villa",
+        "category": "Villa",
+        "capacity": 20,
+        "bedsCount": 6,
+        "bathsCount": 3,
+        "rating": 4.96,
+        "pricePerNight": 7000,
+        "pricePerHour": 800,
+        "status": "Available",
+        "isClean": true,
+        "floor": 1,
+        "sizeSqM": 140,
+        "amenities": ["Private Swimming Pool Access", "BBQ Pavilion & Dining Area", "High-Speed Fiber Wi-Fi", "Full Kitchenette", "Smart TV with Netflix", "Hot & Cold Shower"],
+        "houseRules": ["Respect quiet hours in outdoor patio after 11 PM", "No glassware inside pool area", "No smoking indoors"],
+        "cancellationPolicy": "Free cancellation up to 48 hours before check-in date.",
+        "customRates": {
+          "villaRule": {
+            "basePax": 10,
+            "monThuRate": 7000,
+            "friSunRate": 8000,
+            "extraPaxMonThu": 400,
+            "extraPaxFriSun": 500,
+            "maxCapacity": 20
+          }
+        }
+      }
+    ],
+    "reservations_logs": [
+      {
+        "id": "res-101",
+        "confirmationCode": "DIV-2026-8812",
+        "roomId": "room-17",
+        "roomName": "Room 17 - Private Villa",
+        "roomNumber": "17",
+        "guestName": "Carlos Mendoza",
+        "guestEmail": "carlos.mendoza@example.com",
+        "guestPhone": "+63 917 555 4321",
+        "checkInDate": "2026-09-24",
+        "checkOutDate": "2026-09-26",
+        "numberOfGuests": 12,
+        "totalAmount": 15600,
+        "status": "confirmed",
+        "paymentMethod": "GCash",
+        "specialRequests": "Early check-in at 1:00 PM if available and pool heating request.",
+        "createdAt": "2026-09-20 14:30"
+      },
+      {
+        "id": "res-102",
+        "confirmationCode": "DIV-2026-7734",
+        "roomId": "room-0",
+        "roomName": "Room 0 - Big Family Room",
+        "roomNumber": "0",
+        "guestName": "Maria Santos",
+        "guestEmail": "maria.santos@example.com",
+        "guestPhone": "+63 920 888 1234",
+        "checkInDate": "2026-09-23",
+        "checkOutDate": "2026-09-25",
+        "numberOfGuests": 6,
+        "totalAmount": 4800,
+        "status": "checked-in",
+        "paymentMethod": "Cash on Arrival",
+        "specialRequests": "Extra pillows and towels requested for kids.",
+        "createdAt": "2026-09-21 09:15"
+      },
+      {
+        "id": "res-103",
+        "confirmationCode": "DIV-2026-6641",
+        "roomId": "room-14",
+        "roomName": "Room 14 - Family Room",
+        "roomNumber": "14",
+        "guestName": "Jerome Valdez",
+        "guestEmail": "jerome.valdez@example.com",
+        "guestPhone": "+63 918 222 9988",
+        "checkInDate": "2026-09-22",
+        "checkOutDate": "2026-09-23",
+        "numberOfGuests": 4,
+        "totalAmount": 1350,
+        "status": "confirmed",
+        "paymentMethod": "Maya",
+        "specialRequests": "Late check-in around 8:00 PM after long drive from Manila.",
+        "createdAt": "2026-09-21 16:40"
+      }
+    ],
+    "guest_reviews": [
+      {
+        "id": "rev-1",
+        "roomId": "room-17",
+        "roomName": "Room 17 - Private Villa",
+        "roomNumber": "17",
+        "guestName": "Eduardo Ramos",
+        "guestEmail": "eduardo.ramos@example.com",
+        "bookingCode": "DIV-2026-8812",
+        "rating": 5,
+        "title": "Unforgettable Family Reunion at the Villa!",
+        "comment": "The private pool and BBQ pavilion made our Vigan trip incredible. The place was spotless and only 5 mins away from Calle Crisologo.",
+        "createdAt": "2026-09-18 10:20",
+        "screeningStatus": "approved",
+        "isVerifiedStay": true,
+        "screeningNote": "Verified guest booking. Approved for public listing.",
+        "staffResponse": "Thank you Eduardo! It was a pleasure hosting your family. We hope to welcome you back to Vigan soon!"
+      },
+      {
+        "id": "rev-2",
+        "roomId": "room-0",
+        "roomName": "Room 0 - Big Family Room",
+        "roomNumber": "0",
+        "guestName": "Patricia De Leon",
+        "guestEmail": "patricia.deleon@example.com",
+        "bookingCode": "DIV-2026-7734",
+        "rating": 5,
+        "title": "Super comfortable beds & cold AC",
+        "comment": "Very spacious for our family of 7. Wi-Fi was fast and front desk staff was very accommodating with extra pillows.",
+        "createdAt": "2026-09-19 14:45",
+        "screeningStatus": "approved",
+        "isVerifiedStay": true,
+        "screeningNote": "Verified stay via Front Desk log."
+      },
+      {
+        "id": "rev-3",
+        "roomId": "room-14",
+        "roomName": "Room 14 - Family Room",
+        "roomNumber": "14",
+        "guestName": "Christian Lim",
+        "guestEmail": "christian.lim@example.com",
+        "rating": 5,
+        "title": "Great value for money near heritage area",
+        "comment": "Clean room, quiet location along Diversion road away from traffic noise, and very affordable nightly rate.",
+        "createdAt": "2026-09-22 18:30",
+        "screeningStatus": "pending",
+        "isVerifiedStay": false,
+        "screeningNote": "Newly submitted by guest - pending Front Desk screening."
+      }
+    ],
+    "admin_credentials": {
+      "role": "Front Desk & System Administrator",
+      "username": "admin",
+      "portal_url": "/?view=admin"
+    }
+  }
+}

@@ -4,7 +4,7 @@ import {
   Building2, Users, Calendar, DollarSign, CheckCircle2, AlertCircle, 
   Clock, Plus, Search, Filter, Shield, Sparkles, RefreshCw, Eye, Edit3, Trash2, Check, X,
   Sliders, ListFilter, LayoutGrid, Tag, ArrowUpRight, Upload, Image as ImageIcon,
-  ShieldCheck
+  ShieldCheck, LogOut, Lock
 } from 'lucide-react';
 import { formatPHP } from '../../utils/formatCurrency';
 import { calculateRoomPricing, getRoomCustomRateSummary } from '../../utils/pricingCalculator';
@@ -24,6 +24,7 @@ interface AdminDashboardProps {
   onUpdateRoom?: (room: Room) => void;
   onAddNewRoom?: (room: Room) => void;
   onSaveRoomCustomRates?: (roomId: string, customRates: RoomCustomRates) => void;
+  onLogout?: () => void;
   onShowToast: (message: string, type?: 'success' | 'error' | 'info') => void;
 }
 
@@ -39,6 +40,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   onUpdateRoom,
   onAddNewRoom,
   onSaveRoomCustomRates,
+  onLogout,
   onShowToast,
 }) => {
   const [activeTab, setActiveTab] = useState<'matrix' | 'reservations' | 'reviews'>('matrix');
@@ -249,6 +251,17 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             <Plus className="w-4 h-4" />
             <span>New Walk-In Booking</span>
           </button>
+
+          {onLogout && (
+            <button
+              onClick={onLogout}
+              title="Lock Front Desk & Return to Guest View"
+              className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-rose-50 text-slate-600 hover:text-rose-600 dark:bg-slate-800 dark:hover:bg-rose-950/40 dark:text-slate-300 dark:hover:text-rose-300 border border-slate-200 dark:border-slate-700 text-xs font-semibold transition-all cursor-pointer"
+            >
+              <LogOut className="w-3.5 h-3.5" />
+              <span>Lock / Exit</span>
+            </button>
+          )}
         </div>
       </div>
 
